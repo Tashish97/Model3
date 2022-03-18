@@ -1,0 +1,14 @@
+The app is basically dividedin 3 Parts: (1)Data uploading and visualization, (2)Table based Filtering and (3)About page.
+1. Upload a file with the available extension(.csv) and select the separator from the 3 Option.
+2. Once done uploading click on "Load Variables" button to load the variables, this is needed to trigger activation of Table Filteration as well.
+3. The Plots are all available within a single page with variables selection on the left while navigation panel on the center top helps you to quickly swtich between pages. Each page has a dedicated "Plot" button to plot within the 
+   respective page.(For example: To do plotting in Page 2 select variables from left hand side under Page-2 and click Plot on Page 2.)
+4. Data Analysis can be done using the plots, and Particular plots can be downloaded by clicking the "Camera Icon" over each plot.
+5. A report can be generated using 'Download Report' Button.
+6. For large dataset(max 5MB) plotting might seem to be slow since there are many reactive values and reactive elements, your patience is appreciated.
+7. On the 'Table Page' you can choose the type of filters you want based on the nature of the variables.
+8. While downloading a filtered table you have to keep few things thing in mind:
+   8.1 Always select Show Entries to All before Downloading.
+   8.2 It's important to note that only the section that you see on the page will be snapped as a PDF file, so it's much better to go save as Excel file to save the filtered table.
+   8.3 It's the same when large number of features are present.
+   8.4 No need to specify any extensions just give the path.
