@@ -1,0 +1,58 @@
+---
+title: "Plots and Statistical Report"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+params:
+  df: NA
+  col1: NA
+  col2: NA
+  col3: NA
+  col4: NA
+  col5: NA
+  col6: NA
+  col7: NA
+---
+
+What data looked like(First few rows).  
+
+```{r echo = FALSE, message=FALSE,warning=FALSE}
+# The `params` object is available in the document.
+library(tidyverse)
+library(corrplot)
+head(params$df)
+```
+
+1. Numerical Variable.  
+
+```{r echo = FALSE, message=FALSE,warning=FALSE}
+params$df %>% ggplot(aes_string(params$col1))+geom_histogram(fill="green",color="blue")+
+  labs(title = paste("Plot For",{params$col1}))
+
+print("Descriptive Statistics:")
+summary(params$df[params$col1])
+```
+
+2. Categorical Variable.  
+
+```{r echo = FALSE, message=FALSE,warning=FALSE}
+params$df %>% ggplot(aes_string(params$col2))+geom_bar()+coord_flip()+ labs(title = paste("Plot For",{params$col2}))
+print("Descriptive Statistics:")
+prop.table(table(params$df[params$col2]))*100
+```
+
+3. For Numerical Vs Numerical.  
+```{r echo = FALSE, message=FALSE,warning=FALSE}
+params$df %>% ggplot(aes_string(params$col3,params$col4))+geom_point()+geom_smooth()+labs(title = paste("Plot For",{params$col3},"Vs",{params$col4}))
+
+M <- cor(params$df[c(params$col3,params$col4)])
+corrplot(M,method = "num",type="lower")
+```
+
+4. For Numerical Vs Numerical against a Category.  
+```{r echo = FALSE, message=FALSE,warning=FALSE}
+params$df %>% ggplot(aes_string(params$col3,params$col4))+geom_point(aes_string(color={params$col5}))+
+  labs(title = paste("Plot For",{params$col3},"Vs",{params$col4},"against",{params$col5}))
+```
+5. For Categorical Vs Categorical.  
+```{r echo = FALSE, message=FALSE,warning=FALSE}
+params$df %>% ggplot(aes_string(params$col6))+geom_bar(aes_string(fill={params$col7}),position = "dodge")+labs(title = paste("Plot For",{params$col6},"Vs",{params$col7}))
+````

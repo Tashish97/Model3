@@ -1,2 +1,2 @@
 # Model3
-This Repo Contains Files For Data-Exploration App
+This repo contains files to an Interactive Dashboard
