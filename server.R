@@ -65,7 +65,7 @@ server <- function(input, output) {
   #############################################################################################################  
   # start of tabpanel2
   output$col1 <- renderUI({
-    idx <- which(!grepl("factor",sapply(df_local(), class)))
+    idx <- which(!grepl("factor|logic",sapply(df_local(), class)))
     selectInput("column1","Select a Numerical Variable",
                 choices=c(names(df_local()[idx])),
                 selected = "not_sel")
@@ -74,38 +74,38 @@ server <- function(input, output) {
     summary(df_local()[req(input$column6)])
   })
   output$col2 <- renderUI({
-    idx <- which(grepl("factor",sapply(df_local(), class)))
+    idx <- which(grepl("factor|logic",sapply(df_local(), class)))
     selectInput("column2","Select a Categorical Variable",
                 choices=c(names(df_local()[idx])),
                 selected = "not_sel")
   })
   output$col3 <- renderUI({
-    idx <- which(!grepl("factor",sapply(df_local(), class)))
+    idx <- which(!grepl("factor|logic",sapply(df_local(), class)))
     selectInput("column3","Select Column 1(Numeric Only)",
                 choices=c(names(df_local()[idx])),
                 selected = "not_sel")
   })
   
   output$col4 <- renderUI({
-    idx <- which(!grepl("factor",sapply(df_local(), class)))
+    idx <- which(!grepl("factor|logic",sapply(df_local(), class)))
     selectInput("column4","Select Column 2(Numeric only)",
                 choices=c(names(df_local()[idx])),
                 selected = "not_sel")
   })
   output$col5 <- renderUI({
-    idx <- which(grepl("factor",sapply(df_local(), class)))
+    idx <- which(grepl("factor|logic",sapply(df_local(), class)))
     selectInput("column5","Select Hue For Num Vs Num (Categorical only)",
                 choices=c(names(df_local()[idx])),
                 selected = "not_sel")
   })
   output$col6 <- renderUI({
-    idx <- which(grepl("factor",sapply(df_local(), class)))
+    idx <- which(grepl("factor|logic",sapply(df_local(), class)))
     selectInput("column6","Select a Categorical Variable",
                 choices=c(names(df_local()[idx])),
                 selected = "not_sel")
   })
   output$col7 <- renderUI({
-    idx <- which(grepl("factor",sapply(df_local(), class)))
+    idx <- which(grepl("factor|logic",sapply(df_local(), class)))
     selectInput("column7","Select Hue For Categorical Variable",
                 choices=c(names(df_local()[idx])),
                 selected = "not_sel")
